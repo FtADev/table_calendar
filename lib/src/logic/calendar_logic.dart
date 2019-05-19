@@ -39,14 +39,14 @@ class CalendarLogic {
   bool _useNextCalendarFormat;
 
   CalendarLogic(
-      this._availableCalendarFormats,
-      this._startingDayOfWeek,
-      this._useNextCalendarFormat, {
-        DateTime initialDay,
-        CalendarFormat initialFormat,
-        OnVisibleDaysChanged onVisibleDaysChanged,
-        bool includeInvisibleDays = false,
-      })  : _pageId = 0,
+    this._availableCalendarFormats,
+    this._startingDayOfWeek,
+    this._useNextCalendarFormat, {
+    DateTime initialDay,
+    CalendarFormat initialFormat,
+    OnVisibleDaysChanged onVisibleDaysChanged,
+    bool includeInvisibleDays = false,
+  })  : _pageId = 0,
         _dx = 0 {
     final now = DateTime.now();
     _focusedDay = initialDay ?? DateTime(now.year, now.month, now.day);
@@ -235,19 +235,32 @@ class CalendarLogic {
   }
 
   List<DateTime> _daysInMonth(DateTime month) {
-    final first = Utils.firstDayOfMonth(month);
+//    final first = Utils.firstDayOfMonth(month);
+//    var last = Utils.lastDayOfMonth(month);
+
+    var first, last;
+
+    if (Jalali.fromDateTime(month).month <= 6) {
+      var based = 31 - Jalali.fromDateTime(month).day;
+      first = Jalali.fromJulianDayNumber(Jalali.fromDateTime(month).julianDayNumber + based - 30).toDateTime();
+      last = Jalali.fromJulianDayNumber(Jalali.fromDateTime(first).julianDayNumber + 31).toDateTime();
+    } else {
+      var based = 30 - Jalali.fromDateTime(month).day;
+      first = Jalali.fromJulianDayNumber(Jalali.fromDateTime(month).julianDayNumber + based - 29).toDateTime();
+      last = Jalali.fromJulianDayNumber(Jalali.fromDateTime(first).julianDayNumber + 30).toDateTime();
+    }
+
+//    How about Esfand??!!
+
     final daysBefore = _startingDayOfWeek == StartingDayOfWeek.sunday
         ? first.weekday % 7
         : first.weekday - 1;
-//    print(Jalali.fromDateTime(month).monthLength);
 
     var firstToDisplay = first.subtract(Duration(days: daysBefore));
 
     if (firstToDisplay.hour == 23) {
       firstToDisplay = firstToDisplay.add(Duration(hours: 1));
     }
-
-    var last = Utils.lastDayOfMonth(month);
 
     if (last.hour == 23) {
       last = last.add(Duration(hours: 1));
