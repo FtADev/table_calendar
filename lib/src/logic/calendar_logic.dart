@@ -3,7 +3,7 @@
 
 import 'package:date_utils/date_utils.dart';
 import 'package:flutter/foundation.dart';
-
+import 'package:shamsi_date/shamsi_date.dart';
 import '../../table_calendar.dart';
 
 const double _dxMax = 1.2;
@@ -11,11 +11,17 @@ const double _dxMin = -1.2;
 
 class CalendarLogic {
   DateTime get focusedDay => _focusedDay;
+
   DateTime get selectedDay => _selectedDay;
+
   int get pageId => _pageId;
+
   double get dx => _dx;
+
   CalendarFormat get calendarFormat => _calendarFormat.value;
+
   List<DateTime> get visibleDays => _visibleDays.value;
+
   String get formatButtonText => _useNextCalendarFormat
       ? _availableCalendarFormats[_nextFormat()]
       : _availableCalendarFormats[_calendarFormat.value];
@@ -33,14 +39,14 @@ class CalendarLogic {
   bool _useNextCalendarFormat;
 
   CalendarLogic(
-    this._availableCalendarFormats,
-    this._startingDayOfWeek,
-    this._useNextCalendarFormat, {
-    DateTime initialDay,
-    CalendarFormat initialFormat,
-    OnVisibleDaysChanged onVisibleDaysChanged,
-    bool includeInvisibleDays = false,
-  })  : _pageId = 0,
+      this._availableCalendarFormats,
+      this._startingDayOfWeek,
+      this._useNextCalendarFormat, {
+        DateTime initialDay,
+        CalendarFormat initialFormat,
+        OnVisibleDaysChanged onVisibleDaysChanged,
+        bool includeInvisibleDays = false,
+      })  : _pageId = 0,
         _dx = 0 {
     final now = DateTime.now();
     _focusedDay = initialDay ?? DateTime(now.year, now.month, now.day);
@@ -101,7 +107,8 @@ class CalendarLogic {
     _calendarFormat.value = formats[id];
   }
 
-  bool setSelectedDay(DateTime value, {bool isAnimated = true, bool isProgrammatic = false}) {
+  bool setSelectedDay(DateTime value,
+      {bool isAnimated = true, bool isProgrammatic = false}) {
     if (Utils.isSameDay(value, _selectedDay)) {
       return false;
     }
@@ -164,7 +171,8 @@ class CalendarLogic {
       _focusedDay = Utils.previousWeek(_focusedDay);
     } else {
       // in bottom row OR not visible
-      _focusedDay = Utils.previousWeek(_focusedDay.subtract(const Duration(days: 7)));
+      _focusedDay =
+          Utils.previousWeek(_focusedDay.subtract(const Duration(days: 7)));
     }
   }
 
@@ -228,7 +236,11 @@ class CalendarLogic {
 
   List<DateTime> _daysInMonth(DateTime month) {
     final first = Utils.firstDayOfMonth(month);
-    final daysBefore = _startingDayOfWeek == StartingDayOfWeek.sunday ? first.weekday % 7 : first.weekday - 1;
+    final daysBefore = _startingDayOfWeek == StartingDayOfWeek.sunday
+        ? first.weekday % 7
+        : first.weekday - 1;
+//    print(Jalali.fromDateTime(month).monthLength);
+
     var firstToDisplay = first.subtract(Duration(days: daysBefore));
 
     if (firstToDisplay.hour == 23) {
@@ -262,24 +274,30 @@ class CalendarLogic {
   }
 
   List<DateTime> _daysInWeek(DateTime week) {
-    final first = _firstDayOfWeek(week);
-    final last = _lastDayOfWeek(week);
+    final based = 7 - Jalali.fromDateTime(week).weekDay;
+    final first = Jalali.fromJulianDayNumber(Jalali.fromDateTime(week).julianDayNumber + based - 6).toDateTime();
+    final last = Jalali.fromJulianDayNumber(Jalali.fromDateTime(first).julianDayNumber + 7).toDateTime();
 
     final days = Utils.daysInRange(first, last);
+//    print(days);
     return days.map((day) => DateTime(day.year, day.month, day.day)).toList();
   }
 
   DateTime _firstDayOfWeek(DateTime day) {
     day = DateTime.utc(day.year, day.month, day.day, 12);
 
-    final decreaseNum = _startingDayOfWeek == StartingDayOfWeek.sunday ? day.weekday % 7 : day.weekday - 1;
+    final decreaseNum = _startingDayOfWeek == StartingDayOfWeek.sunday
+        ? day.weekday % 7
+        : day.weekday + 1;
     return day.subtract(Duration(days: decreaseNum));
   }
 
   DateTime _lastDayOfWeek(DateTime day) {
     day = DateTime.utc(day.year, day.month, day.day, 12);
 
-    final increaseNum = _startingDayOfWeek == StartingDayOfWeek.sunday ? day.weekday % 7 : day.weekday - 1;
+    final increaseNum = _startingDayOfWeek == StartingDayOfWeek.sunday
+        ? day.weekday % 7
+        : day.weekday + 1;
     return day.add(Duration(days: 7 - increaseNum));
   }
 
