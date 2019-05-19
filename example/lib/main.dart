@@ -186,15 +186,18 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           CalendarFormat.week: 'هفته',
         },
         calendarStyle: CalendarStyle(
-          selectedColor: Colors.deepOrange[400],
-          todayColor: Colors.deepOrange[200],
+//          selectedColor: Colors.deepOrange[400],
+          selectedColor: Color(0xFFFCD402),
+//          todayColor: Colors.deepOrange[200],
+          todayColor: Colors.yellow[300],
           markersColor: Colors.brown[700],
         ),
         headerStyle: HeaderStyle(
           formatButtonTextStyle:
           TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
           formatButtonDecoration: BoxDecoration(
-            color: Colors.deepOrange[400],
+//            color: Colors.deepOrange[400],
+            color: Colors.yellow[500],
             borderRadius: BorderRadius.circular(16.0),
           ),
         ),
@@ -237,7 +240,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             child: Container(
               margin: const EdgeInsets.all(4.0),
               padding: const EdgeInsets.only(top: 5.0, left: 6.0),
-              color: Colors.deepOrange[300],
+//              color: Colors.deepOrange[300],
+              color: Colors.yellow[300],
               width: 100,
               height: 100,
               child: Text(
@@ -251,7 +255,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           return Container(
             margin: const EdgeInsets.all(4.0),
             padding: const EdgeInsets.only(top: 5.0, left: 6.0),
-            color: Colors.amber[400],
+//            color: Colors.amber[400],
+            color: Colors.yellow[400],
             width: 100,
             height: 100,
             child: Text(
