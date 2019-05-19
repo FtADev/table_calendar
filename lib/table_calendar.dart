@@ -206,7 +206,7 @@ class _TableCalendarState extends State<TableCalendar>
 
             if (runCallback && widget.onDaySelected != null) {
               final key = widget.events.keys.firstWhere(
-                    (it) => Utils.isSameDay(it, widget.selectedDay),
+                (it) => Utils.isSameDay(it, widget.selectedDay),
                 orElse: () => null,
               );
               widget.onDaySelected(
@@ -301,8 +301,11 @@ class _TableCalendarState extends State<TableCalendar>
         child: Text(
           widget.headerStyle.titleTextBuilder != null
               ? widget.headerStyle
-              .titleTextBuilder(_calendarLogic.focusedDay, widget.locale)
-              : Jalali.fromDateTime(_calendarLogic.focusedDay).formatter.mN,
+                  .titleTextBuilder(_calendarLogic.focusedDay, widget.locale)
+              : Jalali.fromDateTime(_calendarLogic.focusedDay).formatter.mN +
+                  " " +
+                  replaceFarsiNumber(
+                      Jalali.fromDateTime(_calendarLogic.focusedDay).formatter.yy),
           style: widget.headerStyle.titleTextStyle,
           textAlign: widget.headerStyle.centerHeaderTitle
               ? TextAlign.center
@@ -425,7 +428,7 @@ class _TableCalendarState extends State<TableCalendar>
       transitionBuilder: (child, animation) {
         return SlideTransition(
           position: Tween<Offset>(
-              begin: Offset(_calendarLogic.dx, 0), end: Offset(0, 0))
+                  begin: Offset(_calendarLogic.dx, 0), end: Offset(0, 0))
               .animate(animation),
           child: child,
         );
@@ -487,12 +490,12 @@ class _TableCalendarState extends State<TableCalendar>
   Widget _buildTableCell(DateTime date) {
     return LayoutBuilder(
       builder: (context, constraints) => ConstrainedBox(
-        constraints: BoxConstraints(
-          maxHeight: widget.rowHeight ?? constraints.maxWidth,
-          minHeight: widget.rowHeight ?? constraints.maxWidth,
-        ),
-        child: _buildCell(date),
-      ),
+            constraints: BoxConstraints(
+              maxHeight: widget.rowHeight ?? constraints.maxWidth,
+              minHeight: widget.rowHeight ?? constraints.maxWidth,
+            ),
+            child: _buildCell(date),
+          ),
     );
   }
 
@@ -514,7 +517,7 @@ class _TableCalendarState extends State<TableCalendar>
     if (key != null) {
       final children = <Widget>[content];
       final events =
-      widget.events[eventKey].take(widget.calendarStyle.markersMaxAmount);
+          widget.events[eventKey].take(widget.calendarStyle.markersMaxAmount);
 
       if (events.isNotEmpty) {
         if (widget.builders.markersBuilder != null) {
