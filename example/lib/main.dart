@@ -178,7 +178,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         holidays: _visibleHolidays,
         initialCalendarFormat: CalendarFormat.week,
         formatAnimation: FormatAnimation.slide,
-        startingDayOfWeek: StartingDayOfWeek.monday,
+        startingDayOfWeek: 6,
         availableGestures: AvailableGestures.all,
         availableCalendarFormats: const {
           CalendarFormat.month: 'ماه',
@@ -215,7 +215,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       holidays: _visibleHolidays,
       initialCalendarFormat: CalendarFormat.month,
       formatAnimation: FormatAnimation.slide,
-      startingDayOfWeek: StartingDayOfWeek.sunday,
+      startingDayOfWeek: 6,
       availableGestures: AvailableGestures.all,
       availableCalendarFormats: const {
         CalendarFormat.month: '',

@@ -109,7 +109,7 @@ class TableCalendar extends StatefulWidget {
   /// `TableCalendar` will start weeks with provided day.
   /// Use `StartingDayOfWeek.monday` for Monday - Sunday week format.
   /// Use `StartingDayOfWeek.sunday` for Sunday - Saturday week format.
-  final StartingDayOfWeek startingDayOfWeek;
+  final int startingDayOfWeek;
 
   /// `HitTestBehavior` for every day cell inside `TableCalendar`.
   final HitTestBehavior dayHitTestBehavior;
@@ -152,7 +152,7 @@ class TableCalendar extends StatefulWidget {
     this.rowHeight,
     this.animateProgSelectedDay = false,
     this.formatAnimation = FormatAnimation.slide,
-    this.startingDayOfWeek = StartingDayOfWeek.sunday,
+    this.startingDayOfWeek = 6,
     this.dayHitTestBehavior = HitTestBehavior.deferToChild,
     this.availableGestures = AvailableGestures.all,
     this.simpleSwipeConfig = const SimpleSwipeConfig(

@@ -28,7 +28,7 @@ class CalendarLogic {
 
   DateTime _focusedDay;
   DateTime _selectedDay;
-  StartingDayOfWeek _startingDayOfWeek;
+  int _startingDayOfWeek;
   ValueNotifier<CalendarFormat> _calendarFormat;
   ValueNotifier<List<DateTime>> _visibleDays;
   Map<CalendarFormat, String> _availableCalendarFormats;
@@ -237,7 +237,6 @@ class CalendarLogic {
   List<DateTime> _daysInMonth(DateTime month) {
 //    final first = Utils.firstDayOfMonth(month);
 //    var last = Utils.lastDayOfMonth(month);
-
     var first, last;
 
     if (Jalali.fromDateTime(month).month <= 6) {
@@ -250,9 +249,14 @@ class CalendarLogic {
       last = Jalali.fromJulianDayNumber(Jalali.fromDateTime(first).julianDayNumber + 30).toDateTime();
     }
 
-//    How about Esfand??!!
+//    How about Esfand ??!!
 
-    final daysBefore = _startingDayOfWeek == StartingDayOfWeek.sunday
+    var f = Jalali.fromJulianDayNumber(Jalali.fromDateTime(month).julianDayNumber - 10).toDateTime();
+    var l = Jalali.fromJulianDayNumber(Jalali.fromDateTime(first).julianDayNumber + 10).toDateTime();
+
+    print(first.weekday);
+
+    final daysBefore = _startingDayOfWeek == 6
         ? first.weekday % 7
         : first.weekday - 1;
 
@@ -268,7 +272,7 @@ class CalendarLogic {
 
     var daysAfter = 7 - last.weekday;
 
-    if (_startingDayOfWeek == StartingDayOfWeek.sunday) {
+    if (_startingDayOfWeek == 6) {
       // If the last day is Sunday (7) the entire week must be rendered
       if (daysAfter == 0) {
         daysAfter = 7;
@@ -299,7 +303,7 @@ class CalendarLogic {
   DateTime _firstDayOfWeek(DateTime day) {
     day = DateTime.utc(day.year, day.month, day.day, 12);
 
-    final decreaseNum = _startingDayOfWeek == StartingDayOfWeek.sunday
+    final decreaseNum = _startingDayOfWeek == 6
         ? day.weekday % 7
         : day.weekday + 1;
     return day.subtract(Duration(days: decreaseNum));
@@ -308,7 +312,7 @@ class CalendarLogic {
   DateTime _lastDayOfWeek(DateTime day) {
     day = DateTime.utc(day.year, day.month, day.day, 12);
 
-    final increaseNum = _startingDayOfWeek == StartingDayOfWeek.sunday
+    final increaseNum = _startingDayOfWeek == 6
         ? day.weekday % 7
         : day.weekday + 1;
     return day.add(Duration(days: 7 - increaseNum));
