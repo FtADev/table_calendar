@@ -21,29 +21,3 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
-
-  fonts:
-    - family: iranyekan_black
-      fonts:
-        - asset: lib/fonts/IRANYekanMobileBlack.ttf
-    - family: iranyekan_light
-      fonts:
-        - asset: lib/fonts/IRANYekanMobileLight.ttf
-    - family: iranyekan_bold
-      fonts:
-        - asset: lib/fonts/IRANYekanMobileBold.ttf
-    - family: iranyekan_ex
-      fonts:
-        - asset: lib/fonts/IRANYekanMobileExtraBlack.ttf
-    - family: iranyekan_exbold
-      fonts:
-        - asset: lib/fonts/IRANYekanMobileExtraBold.ttf
-    - family: iranyekan_medium
-      fonts:
-        - asset: lib/fonts/IRANYekanMobileMedium.ttf
-    - family: iranyekan
-      fonts:
-        - asset: lib/fonts/IRANYekanMobileRegular.ttf
-    - family: iranyekan_thin
-      fonts:
-        - asset: lib/fonts/IRANYekanMobileThin.ttf

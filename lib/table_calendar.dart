@@ -272,13 +272,6 @@ class _TableCalendarState extends State<TableCalendar>
       children.addAll([
         const SizedBox(height: 6.0),
         _buildHeader(),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
-          child: Divider(
-            height: 2,
-            color: Colors.black,
-          ),
-        )
       ]);
     }
 
@@ -305,22 +298,18 @@ class _TableCalendarState extends State<TableCalendar>
         padding: widget.headerStyle.leftChevronPadding,
       ),
       Expanded(
-        child: Center(
-          child: Text(
-            widget.headerStyle.titleTextBuilder != null
-                ? widget.headerStyle
-                    .titleTextBuilder(_calendarLogic.focusedDay, widget.locale)
-                : Jalali.fromDateTime(_calendarLogic.focusedDay).formatter.mN +
-                    " " +
-                    replaceFarsiNumber(
-                        Jalali.fromDateTime(_calendarLogic.focusedDay)
-                            .formatter
-                            .yy),
-            style: widget.headerStyle.titleTextStyle,
-            textAlign: widget.headerStyle.centerHeaderTitle
-                ? TextAlign.center
-                : TextAlign.start,
-          ),
+        child: Text(
+          widget.headerStyle.titleTextBuilder != null
+              ? widget.headerStyle
+                  .titleTextBuilder(_calendarLogic.focusedDay, widget.locale)
+              : Jalali.fromDateTime(_calendarLogic.focusedDay).formatter.mN +
+                  " " +
+                  replaceFarsiNumber(
+                      Jalali.fromDateTime(_calendarLogic.focusedDay).formatter.yy),
+          style: widget.headerStyle.titleTextStyle,
+          textAlign: widget.headerStyle.centerHeaderTitle
+              ? TextAlign.center
+              : TextAlign.start,
         ),
       ),
       CustomIconButton(

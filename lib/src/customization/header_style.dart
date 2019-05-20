@@ -65,7 +65,7 @@ class HeaderStyle {
     this.formatButtonVisible = true,
     this.formatButtonShowsNext = true,
     this.titleTextBuilder,
-    this.titleTextStyle = const TextStyle(fontSize:20.0, fontWeight: FontWeight.bold, fontFamily: 'iranyekan_bold'),
+    this.titleTextStyle = const TextStyle(fontSize: 17.0),
     this.formatButtonTextStyle = const TextStyle(),
     this.formatButtonDecoration = const BoxDecoration(
       border: const Border(top: BorderSide(), bottom: BorderSide(), left: BorderSide(), right: BorderSide()),
@@ -76,7 +76,7 @@ class HeaderStyle {
     this.rightChevronPadding = const EdgeInsets.all(12.0),
     this.leftChevronMargin = const EdgeInsets.symmetric(horizontal: 8.0),
     this.rightChevronMargin = const EdgeInsets.symmetric(horizontal: 8.0),
-    this.leftChevronIcon = const Icon(Icons.chevron_left, color: Color(0xFFFCD402),),
-    this.rightChevronIcon = const Icon(Icons.chevron_right, color: Color(0xFFFCD402),),
+    this.leftChevronIcon = const Icon(Icons.chevron_left, color: Colors.black),
+    this.rightChevronIcon = const Icon(Icons.chevron_right, color: Colors.black),
   });
 }
