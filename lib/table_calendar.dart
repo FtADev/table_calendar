@@ -272,16 +272,13 @@ class _TableCalendarState extends State<TableCalendar>
       children.addAll([
         const SizedBox(height: 6.0),
         _buildHeader(),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
-          child: Container(
+        Container(
             child: Divider(
               height: 2,
               color: Colors.grey[400],
             ),
             padding: EdgeInsets.symmetric(horizontal: 12),
           ),
-        )
       ]);
     }
 
