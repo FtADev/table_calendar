@@ -525,43 +525,43 @@ class _TableCalendarState extends State<TableCalendar>
 
     if (key != null) {
       final children = <Widget>[content];
-      final events =
-          widget.events[eventKey].take(widget.calendarStyle.markersMaxAmount);
+//      final events =
+//          widget.events[eventKey].take(widget.calendarStyle.markersMaxAmount);
+//
+//      if (events.isNotEmpty) {
+//        if (widget.builders.markersBuilder != null) {
+//          children.addAll(
+//            widget.builders.markersBuilder(
+//              context,
+//              key,
+//              events.toList(),
+//              widget.holidays[holidayKey],
+//            ),
+//          );
+//        } else {
+//          children.add(
+//            Positioned(
+//              top: widget.calendarStyle.markersPositionTop,
+//              bottom: widget.calendarStyle.markersPositionBottom,
+//              left: widget.calendarStyle.markersPositionLeft,
+//              right: widget.calendarStyle.markersPositionRight,
+//              child: Row(
+//                mainAxisSize: MainAxisSize.min,
+//                children: events
+//                    .map((event) => _buildMarker(eventKey, event))
+//                    .toList(),
+//              ),
+//            ),
+//          );
+//        }
+//      }
 
-      if (events.isNotEmpty) {
-        if (widget.builders.markersBuilder != null) {
-          children.addAll(
-            widget.builders.markersBuilder(
-              context,
-              key,
-              events.toList(),
-              widget.holidays[holidayKey],
-            ),
-          );
-        } else {
-          children.add(
-            Positioned(
-              top: widget.calendarStyle.markersPositionTop,
-              bottom: widget.calendarStyle.markersPositionBottom,
-              left: widget.calendarStyle.markersPositionLeft,
-              right: widget.calendarStyle.markersPositionRight,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: events
-                    .map((event) => _buildMarker(eventKey, event))
-                    .toList(),
-              ),
-            ),
-          );
-        }
-      }
-
-      if (children.length > 1) {
-        content = Stack(
-          alignment: widget.calendarStyle.markersAlignment,
-          children: children,
-        );
-      }
+//      if (children.length > 1) {
+//        content = Stack(
+//          alignment: widget.calendarStyle.markersAlignment,
+//          children: children,
+//        );
+//      }
     }
 
     return GestureDetector(
@@ -651,19 +651,19 @@ class _TableCalendarState extends State<TableCalendar>
     return input;
   }
 
-  Widget _buildMarker(DateTime date, dynamic event) {
-    if (widget.builders.singleMarkerBuilder != null) {
-      return widget.builders.singleMarkerBuilder(context, date, event);
-    } else {
-      return Container(
-        width: 8.0,
-        height: 8.0,
-        margin: const EdgeInsets.symmetric(horizontal: 0.3),
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: widget.calendarStyle.markersColor,
-        ),
-      );
-    }
-  }
+//  Widget _buildMarker(DateTime date, dynamic event) {
+//    if (widget.builders.singleMarkerBuilder != null) {
+//      return widget.builders.singleMarkerBuilder(context, date, event);
+//    } else {
+//      return Container(
+//        width: 8.0,
+//        height: 8.0,
+//        margin: const EdgeInsets.symmetric(horizontal: 0.3),
+//        decoration: BoxDecoration(
+//          shape: BoxShape.circle,
+//          color: widget.calendarStyle.markersColor,
+//        ),
+//      );
+//    }
+//  }
 }

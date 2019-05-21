@@ -190,7 +190,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           selectedColor: Color(0xFFFCD402),
 //          todayColor: Colors.deepOrange[200],
           todayColor: Colors.yellow[300],
-          markersColor: Colors.brown[700],
+//          markersColor: Colors.brown[700],
         ),
         headerStyle: HeaderStyle(
           formatButtonTextStyle:
@@ -265,31 +265,31 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             ),
           );
         },
-        markersBuilder: (context, date, events, holidays) {
-          final children = <Widget>[];
-
-          if (events != null) {
-            children.add(
-              Positioned(
-                right: 1,
-                bottom: 1,
-                child: _buildEventsMarker(date, events),
-              ),
-            );
-          }
-
-          if (holidays != null) {
-            children.add(
-              Positioned(
-                right: -2,
-                top: -2,
-                child: _buildHolidaysMarker(),
-              ),
-            );
-          }
-
-          return children;
-        },
+//        markersBuilder: (context, date, events, holidays) {
+//          final children = <Widget>[];
+//
+//          if (events != null) {
+//            children.add(
+//              Positioned(
+//                right: 1,
+//                bottom: 1,
+//                child: _buildEventsMarker(date, events),
+//              ),
+//            );
+//          }
+//
+//          if (holidays != null) {
+//            children.add(
+//              Positioned(
+//                right: -2,
+//                top: -2,
+//                child: _buildHolidaysMarker(),
+//              ),
+//            );
+//          }
+//
+//          return children;
+//        },
       ),
       onDaySelected: (date, events) {
         _onDaySelected(date, events);

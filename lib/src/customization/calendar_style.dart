@@ -36,27 +36,27 @@ class CalendarStyle {
   final Color todayColor;
 
   /// Color of event markers placed on the bottom of every day containing events.
-  final Color markersColor;
+//  final Color markersColor;
 
   /// General `Alignment` for event markers.
   /// NOTE: `markersPositionBottom` defaults to `5.0`, so you might want to set it to `null` when using `markersAlignment`.
-  final Alignment markersAlignment;
+//  final Alignment markersAlignment;
 
   /// `top` property of `Positioned` widget used for event markers.
-  final double markersPositionTop;
+//  final double markersPositionTop;
 
   /// `bottom` property of `Positioned` widget used for event markers.
   /// NOTE: This defaults to `5.0`, so you might occasionally want to set it to `null`.
-  final double markersPositionBottom;
+//  final double markersPositionBottom;
 
   /// `left` property of `Positioned` widget used for event markers.
-  final double markersPositionLeft;
+//  final double markersPositionLeft;
 
   /// `right` property of `Positioned` widget used for event markers.
-  final double markersPositionRight;
+//  final double markersPositionRight;
 
   /// Maximum amount of event markers to be displayed.
-  final int markersMaxAmount;
+//  final int markersMaxAmount;
 
   /// Specifies whether or not days outside of current month should be displayed.
   ///
@@ -83,13 +83,13 @@ class CalendarStyle {
     this.outsideHolidayStyle = const TextStyle(), // Material red[200]
     this.selectedColor = const Color(0xFF5C6BC0), // Material indigo[400]
     this.todayColor = const Color(0xFF9FA8DA), // Material indigo[200]
-    this.markersColor = const Color(0xFF263238), // Material blueGrey[900]
-    this.markersAlignment = Alignment.bottomCenter,
-    this.markersPositionTop,
-    this.markersPositionBottom = 5.0,
-    this.markersPositionLeft,
-    this.markersPositionRight,
-    this.markersMaxAmount = 4,
+//    this.markersColor = const Color(0xFF263238), // Material blueGrey[900]
+//    this.markersAlignment = Alignment.bottomCenter,
+//    this.markersPositionTop,
+//    this.markersPositionBottom = 5.0,
+//    this.markersPositionLeft,
+//    this.markersPositionRight,
+//    this.markersMaxAmount = 4,
     this.outsideDaysVisible = true,
     this.renderSelectedFirst = true,
   });

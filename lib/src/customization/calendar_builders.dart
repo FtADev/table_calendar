@@ -49,14 +49,14 @@ class CalendarBuilders {
   ///
   /// If `markersBuilder` is not specified, `TableCalendar` will try to use `singleMarkerBuilder` or default markers (customizable with `CalendarStyle`).
   /// Mutually exclusive with `singleMarkerBuilder`.
-  final FullListBuilder markersBuilder;
+//  final FullListBuilder markersBuilder;
 
   /// Custom Builder for a single event marker. Each of those will be displayed in a `Row` above of the day cell.
   /// You can adjust markers' position with `CalendarStyle` properties.
   ///
   /// If `singleMarkerBuilder` is not specified, a default event marker will be displayed (customizable with `CalendarStyle`).
   /// Mutually exclusive with `markersBuilder`.
-  final SingleMarkerBuilder singleMarkerBuilder;
+//  final SingleMarkerBuilder singleMarkerBuilder;
 
   const CalendarBuilders({
     this.dayBuilder,
@@ -67,7 +67,8 @@ class CalendarBuilders {
     this.outsideDayBuilder,
     this.outsideWeekendDayBuilder,
     this.outsideHolidayDayBuilder,
-    this.markersBuilder,
-    this.singleMarkerBuilder,
-  }) : assert(!(singleMarkerBuilder != null && markersBuilder != null));
+//    this.markersBuilder,
+//    this.singleMarkerBuilder,
+//  }) : assert(!(singleMarkerBuilder != null && markersBuilder != null));
+  });
 }
