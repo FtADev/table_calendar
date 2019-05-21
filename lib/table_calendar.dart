@@ -274,9 +274,12 @@ class _TableCalendarState extends State<TableCalendar>
         _buildHeader(),
         Padding(
           padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
-          child: Divider(
-            height: 2,
-            color: Colors.black,
+          child: Container(
+            child: Divider(
+              height: 2,
+              color: Colors.grey[400],
+            ),
+            padding: EdgeInsets.symmetric(horizontal: 12),
           ),
         )
       ]);
